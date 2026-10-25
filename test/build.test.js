@@ -2,7 +2,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
-const path = require('node:path');
 
 const pages = fs.readdirSync('out').filter((f) => f.endsWith('.html'));
 
@@ -19,12 +18,9 @@ test('every page is real HTML and not raw Markdown', () => {
   }
 });
 
-test('outputs are non-empty', () => {
-  const files = fs.readdirSync('out').filter(f => f.endsWith('.html'));
-  assert.ok(files.length > 0, 'No output HTML files found to test');
-
-  for (const file of files) {
-    const stats = fs.statSync(path.join('out', file));
-    assert.ok(stats.size > 0, `Output file ${file} is empty (0 bytes)`);
+test('no page is empty', () => {
+  for (const p of pages) {
+    const stats = fs.statSync('out/' + p);
+    assert.ok(stats.size > 0, `File ${p} is zero bytes`);
   }
 });
