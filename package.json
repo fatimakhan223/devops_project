@@ -1,7 +1,14 @@
 {
   "name": "devops-pipeline",
   "version": "1.1.0",
+<<<<<<< HEAD
   "description": "Renders the course Markdown sources into HTML pages",
+=======
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+>>>>>>> dd1051b (Add npm build and packaging)
   "main": "tools/build.js",
   "bin": {
     "devops-build": "tools/build.js"
@@ -17,7 +24,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+<<<<<<< HEAD
   "dependencies": {
     "markdown-it": "^15.0.3"
+=======
+  "type": "commonjs",
+  "dependencies": {
+    "markdown-it": "^15.0.3"
+
+>>>>>>> dd1051b (Add npm build and packaging)
   }
 }
