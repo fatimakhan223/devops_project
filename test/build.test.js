@@ -18,6 +18,12 @@ test('every page is real HTML and not raw Markdown', () => {
   }
 });
 
+test('no page is empty', () => {
+  for (const p of pages) {
+    const stats = fs.statSync('out/' + p);
+    assert.ok(stats.size > 0, `File ${p} is zero bytes`);
+  }
+});
 test('every page names the course', () => {
   for (const p of pages) {
     assert.match(fs.readFileSync('out/' + p, 'utf8'), /DevOps/);
