@@ -29,6 +29,6 @@
   "license": "ISC",
   "dependencies": {
     "markdown-it": "^15.0.3",
-    "js-yml": "^4.1.0"
+    "js-yaml": "^4.1.0"
   }
 }
