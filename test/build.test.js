@@ -24,3 +24,5 @@ test('no page is empty', () => {
     assert.ok(stats.size > 0, `File ${p} is zero bytes`);
   }
 });
+
+test('this always fails', () => assert.ok(false));
