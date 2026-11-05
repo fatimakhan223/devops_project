@@ -13,4 +13,4 @@ jobs:
         with:
           node-version: '22'
       - name: Build, test and package
-
+        run: make ci
