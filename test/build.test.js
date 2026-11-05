@@ -24,3 +24,11 @@ test('no page is empty', () => {
     assert.ok(stats.size > 0, `File ${p} is zero bytes`);
   }
 });
+
+test('each page title is its source filename', () => {
+  for (const p of pages) {
+    const html = fs.readFileSync('out/' + p, 'utf8');
+    const expectedTitle = p.replace('.html', '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+    assert.ok(html.includes('<title>' + expectedTitle + '</title>'));
+  }
+});
