@@ -13,6 +13,7 @@ if (!src || !dest) {
 
 const md = new MarkdownIt({ html: false, linkify: true, typographer: true });
 const body = md.render(fs.readFileSync(src, 'utf8'));
+// The title is derived from the source filename, with dashes replaced by spaces and each word capitalized.
 const title = path.basename(src, '.md')
   .replace(/-/g, ' ')
   .replace(/\b\w/g, (c) => c.toUpperCase());
