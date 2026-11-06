@@ -13,7 +13,8 @@ if (!src || !dest) {
 
 const md = new MarkdownIt({ html: false, linkify: true, typographer: true });
 const body = md.render(fs.readFileSync(src, 'utf8'));
-//for branch a i added this test
+
+
 const title = path.basename(src, '.md')
   .replace(/-/g, ' ')
   .replace(/\b\w/g, (c) => c.toUpperCase());
