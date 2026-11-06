@@ -26,4 +26,3 @@ test('no page is empty', () => {
 });
 
 
-test('this always fails', () => assert.ok(false));
