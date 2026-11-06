@@ -25,6 +25,7 @@ test('no page is empty', () => {
   }
 });
 
+// Adding test for semantic conflict
 test('each page title is its source filename', () => {
   for (const p of pages) {
     const html = fs.readFileSync('out/' + p, 'utf8');
