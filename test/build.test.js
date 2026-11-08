@@ -3,7 +3,6 @@ const { test } = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 
-const unused=  100;
 
 const pages = fs.readdirSync('out').filter((f) => f.endsWith('.html'));
 
