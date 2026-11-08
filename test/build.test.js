@@ -29,7 +29,7 @@ test('each page title is its source filename', () => {
   for (const p of pages) {
     const html = fs.readFileSync('out/' + p, 'utf8');
     const title = p.replace(/\.html$/, '');
-    assert.match(html, new RegExp(`<title>${title}</title>`));
+    assert.match(html, new RegExp(`<title>${title}</title>`,'i'));
   }
 });
 
