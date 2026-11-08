@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: '22'
           cache: npm
+      - run: npm ci
       - run: make lint
 
   test:
@@ -29,6 +30,7 @@ jobs:
         with:
           node-version: '22'
           cache: npm
+      - run: npm ci
       - run: make coverage
       - uses: actions/upload-artifact@v4
         with:
@@ -46,14 +48,13 @@ jobs:
         with:
           node-version: '22'
           cache: npm
+      - run: npm ci
       - run: make package
       - uses: actions/upload-artifact@v4
         with:
           name: devops-pipeline
           path: '*.tgz'
           if-no-files-found: error
-      
-
   audit:
     name: dependency-audit
     runs-on: ubuntu-24.04
