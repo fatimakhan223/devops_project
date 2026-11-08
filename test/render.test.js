@@ -24,6 +24,6 @@ test('main writes the page it was asked for', () => {
   assert.strictEqual(main([src, path.join(dir, 'out', 'hello.html')]), 0);
   assert.match(
     fs.readFileSync(path.join(dir, 'out', 'hello.html'), 'utf8'),
-    /<title>Hello<\/title>/i
+    /<title>hello<\/title>/i
   );
 });
