@@ -67,4 +67,7 @@ package: test ## produce the versioned artifact
 clean: ## remove all generated files
 	rm -rf $(OUT_DIR) *.tgz
 
-ci: clean deps check test package ## the build server entry point
+lint: node_modules ## static analysis: seconds, so it runs first
+	npm run --silent lint
+
+ci: clean deps check lint test package ## the build server entry point
