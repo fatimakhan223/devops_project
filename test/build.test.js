@@ -27,7 +27,7 @@ test('no page is empty', () => {
 
 test('each page title is its source filename', () => {
   for (const p of pages) {
-    const html = fs.readFileSync('out/' + p, 'utf8');
+    fs.readFileSync('out/' + p, 'utf8');
   }
 });
 

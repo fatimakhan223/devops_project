@@ -4,7 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const MarkdownIt = require('markdown-it');
- 
+
 const md = new MarkdownIt({ html: false, linkify: true, typographer: true });
 
 // The part worth testing: Markdown text in, a complete HTML page out.
@@ -16,7 +16,7 @@ function renderPage(markdown, title) {
 ${md.render(markdown)}</html>
 `;
 }
- 
+
 function main(argv) {
   const [src, dest] = argv;
   if (!src || !dest) {
@@ -28,9 +28,9 @@ function main(argv) {
   fs.writeFileSync(dest, html);
   return 0;
 }
- 
+
 module.exports = { renderPage, main };
- 
+
 if (require.main === module) {
   process.exitCode = main(process.argv.slice(2));
 }
