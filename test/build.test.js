@@ -3,6 +3,8 @@ const { test } = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 
+const unused=  100;
+
 const pages = fs.readdirSync('out').filter((f) => f.endsWith('.html'));
 
 test('every source produced a page', () => {
@@ -28,6 +30,7 @@ test('no page is empty', () => {
 test('each page title is its source filename', () => {
   for (const p of pages) {
     const html = fs.readFileSync('out/' + p, 'utf8');
+    assert.ok(html.includes('<title>' + p.replace('.html', '') + '</title>'));
   }
 });
 
