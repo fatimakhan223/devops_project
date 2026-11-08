@@ -22,8 +22,8 @@
   ],
   "scripts": {
     "build": "node tools/build.js",
-    "test": "node --test",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "node --test"
   },
   "keywords": [],
   "author": "",
