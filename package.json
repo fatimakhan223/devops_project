@@ -20,7 +20,8 @@
     "tools/",
     "README.md"
   ],
-  "scripts": {
+  "scripts":{
+    "lint": "eslint .",
     "build": "node tools/build.js",
     "lint": "eslint .",
     "test": "node --test"

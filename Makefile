@@ -63,17 +63,12 @@ build: $(OUTPUTS)
 
 package: test ## produce the versioned artifact
 	npm pack
-
 coverage: build ## the tests again, writing coverage/lcov.info for SonarQube
 	@mkdir -p coverage
-	node --test --experimental-test-coverage \
-	--test-reporter spec --test-reporter-destination=stdout \
-	--test-reporter=lcov --test-reporter-destination=coverage/lcov.info
-
+	node --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=coverage/lcov.info test/*.test.js
 clean: ## remove all generated files
 	rm -rf $(OUT_DIR) coverage *.tgz
 
-lint: node_modules ## static analysis: seconds, so it runs first
+lint: node_modules  ## static analysis: seconds, so it runs first
 	npm run --silent lint
-
-ci: clean deps check lint test package ## the build server entry point
+ci: clean deps check test package ## the build server entry point

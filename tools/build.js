@@ -1,19 +1,19 @@
 #!/usr/bin/env node
-// tools/build.js renders one Markdown source into one HTML page.
-// Called by the Makefile: npm run build src/notes.md out/notes.html
+// tools/build.js — renders one Markdown source into one HTML page.
+// Called by the Makefile:  npm run build -- src/notes.md out/notes.html
 const fs = require('fs');
 const path = require('path');
 const MarkdownIt = require('markdown-it');
 
 const md = new MarkdownIt({ html: false, linkify: true, typographer: true });
 
-// The part worth testing: Markdown text in, a complete HTML page out.
-function renderPage(markdown, title) {
+function renderPage(srcText, title) {
+  const body = md.render(srcText);
   return `<!doctype html>
 <html lang="en">
 <meta charset="utf-8">
 <title>${title}</title>
-${md.render(markdown)}</html>
+${body}</html>
 `;
 }
 
@@ -23,14 +23,21 @@ function main(argv) {
     console.error('usage: build.js <source.md> <dest.html>');
     return 2;
   }
-  const html = renderPage(fs.readFileSync(src, 'utf8'), path.basename(src, '.md'));
+
+  const title = path.basename(src, '.md')
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+
+  const srcText = fs.readFileSync(src, 'utf8');
+  const html = renderPage(srcText, title);
+
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.writeFileSync(dest, html);
   return 0;
 }
 
-module.exports = { renderPage, main };
-
 if (require.main === module) {
   process.exitCode = main(process.argv.slice(2));
 }
+
+module.exports = { renderPage, main };

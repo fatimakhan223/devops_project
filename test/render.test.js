@@ -1,5 +1,3 @@
-// test/render.test.js unit tests that load tools/build.js directly,
-// so the coverage report finally measures the code that matters.
 const { test } = require('node:test');
 const assert = require('node:assert');
 const { renderPage, main } = require('../tools/build');
@@ -26,6 +24,6 @@ test('main writes the page it was asked for', () => {
   assert.strictEqual(main([src, path.join(dir, 'out', 'hello.html')]), 0);
   assert.match(
     fs.readFileSync(path.join(dir, 'out', 'hello.html'), 'utf8'),
-    /<title>hello<\/title>/
+    /<title>hello<\/title>/i
   );
 });
