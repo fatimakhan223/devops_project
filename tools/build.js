@@ -6,6 +6,7 @@ const path = require('path');
 const MarkdownIt = require('markdown-it');
 
 const unusedLimit = 100;
+const unusedLimit = 100;
 const md = new MarkdownIt({ html: false, linkify: true, typographer: true });
 
 function renderPage(srcText, title) {
